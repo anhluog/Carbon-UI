@@ -112,14 +112,16 @@ const WalletConnect: React.FC<WalletConnectProps> = ({ onConnect }) => {
 
       console.log("✅ Auth success:", response.data);
 
-      // ← SỬA: Lưu token chỉ khi success và token tồn tại
-      if (response.status === 200 && response.data.token) {
-        localStorage.setItem("token", response.data.token);  // Lưu token vào localStorage
-        console.log("Token saved to localStorage:", response.data.token.substring(0, 20) + "...");  // Debug
-        onConnect(address);  // Redirect
-      } else {
-        throw new Error("Auth failed: No token in response");
-      }
+
+
+
+      // Truyền địa chỉ lên component cha để redirect
+      if (response.status === 200 && response.data.user) {
+      console.log("✅ Auth success:", response.data);
+      onConnect(address);  // Chỉ gọi redirect nếu OK và user không null
+    } else {
+      throw new Error("Auth failed: Invalid response from server");
+    }
 
       // Lắng nghe thay đổi (reload trang để reset state)
       window.ethereum.on("accountsChanged", () => window.location.reload());

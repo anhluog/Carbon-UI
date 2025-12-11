@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Leaf, Wallet, ArrowUpDown, Building2, TrendingUp, Award, Plus, Send, ShoppingCart, Users, Repeat, Droplets, Bookmark } from 'lucide-react';
+import { Leaf, Wallet, ArrowUpDown, Building2, TrendingUp, Award, Plus, Send, ShoppingCart, Users, Repeat, Droplets } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import MintToken from './components/MintToken';
 import Transfer from './components/Transfer';
@@ -9,7 +9,6 @@ import P2PTrading from './components/P2PTrading';
 import AMMTrading from './components/AMMTrading';
 import WalletConnect from './components/WalletConnect';
 import RetiredProjects from './components/RetiredProject';
-import OrderBook from './components/OrderBook';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -24,9 +23,7 @@ function App() {
     { id: 'p2p', name: 'P2P Trading', icon: Repeat },
     { id: 'amm', name: 'AMM Pool', icon: Droplets },
     { id: 'organization', name: 'Organization', icon: Building2 },
-    { id: 'retired', name: 'RetiredProject', icon: Award },
-    { id: 'orderbook', name: 'Orderbook', icon: Bookmark }
-    
+    { id: 'retired', name: 'RetiredProject', icon: Award }
   ];
 
   const handleWalletConnect = (address: string) => {
@@ -56,8 +53,6 @@ function App() {
         return <ManageOrg walletAddress={walletAddress} />;
       case 'retired':
         return <RetiredProjects walletAddress={walletAddress}/>; 
-      case 'orderbook':
-        return <OrderBook account={walletAddress}/>;
       default:
         return <Dashboard walletAddress={walletAddress} />;
     }
