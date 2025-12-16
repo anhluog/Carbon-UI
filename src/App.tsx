@@ -8,6 +8,9 @@ import Marketplace from './components/Marketplace';
 =======
 import P2PTrading from './components/P2PTrading';
 import AMMTrading from './components/AMMTrading';
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 import RetiredProjects from './components/RetiredProject';
 import CryptoMarket from './components/CryptoMarket';
