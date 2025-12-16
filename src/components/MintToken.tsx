@@ -190,7 +190,7 @@ const MintToken: React.FC<MintTokenProps> = ({ walletAddress }) => {
       if (err?.data) console.error("📜 err.data:", err.data);
       if (err?.stack) console.error("🧠 Stack trace:", err.stack);
 
-      alert(`❌ Error: ${err.message || "Gặp lỗi khi mint token!"}`);
+      alert(`❌ Error: ${err.message || "Gặp lỗi khi Request Review!"}`);
     } finally {
       console.log("🏁 Kết thúc quá trình mint.\n-------------------------");
       setIsSubmitting(false);
@@ -424,7 +424,7 @@ const MintToken: React.FC<MintTokenProps> = ({ walletAddress }) => {
                 ) : (
                   <>
                     <Plus className="h-5 w-5" />
-                    <span>Mint Tokens</span>
+                    <span>Request Review</span>
                   </>
                 )}
               </button>

@@ -1,54 +1,40 @@
 import React, { useState } from 'react';
-import { Leaf, Wallet, ArrowUpDown, Building2, TrendingUp, Award, Plus, Send, ShoppingCart, Users, Repeat, Droplets } from 'lucide-react';
+import { Leaf, Wallet, Building2, TrendingUp, Award, Plus, ShoppingCart, User, Users } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import MintToken from './components/MintToken';
-import Transfer from './components/Transfer';
 import ManageOrg from './components/ManageOrg';
 import Marketplace from './components/Marketplace';
-import P2PTrading from './components/P2PTrading';
-import AMMTrading from './components/AMMTrading';
-import WalletConnect from './components/WalletConnect';
 import RetiredProjects from './components/RetiredProject';
+import CryptoMarket from './components/CryptoMarket';
+import RequestRole from './components/RequestRole';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [walletAddress, setWalletAddress] = useState('');
+  const [isWalletConnected, setIsWalletConnected] = useState(true);
+  const [walletAddress, setWalletAddress] = useState('0x1234567890123456789012345678901234567890');
 
   const tabs = [
-    { id: 'dashboard', name: 'Dashboard', icon: TrendingUp },
-    { id: 'mint', name: 'Mint Tokens', icon: Plus },
-    { id: 'transfer', name: 'Transfer', icon: Send },
+    { id: 'dashboard', name: 'User', icon: User },
+    { id: 'crypto', name: 'Crypto Market', icon: TrendingUp },
+    { id: 'mint', name: 'Request Review', icon: Plus },
+    { id: 'requestRole', name: 'Request Role', icon: Users },
     { id: 'marketplace', name: 'Marketplace', icon: ShoppingCart },
-    { id: 'p2p', name: 'P2P Trading', icon: Repeat },
-    { id: 'amm', name: 'AMM Pool', icon: Droplets },
     { id: 'organization', name: 'Organization', icon: Building2 },
     { id: 'retired', name: 'RetiredProject', icon: Award }
   ];
 
-  const handleWalletConnect = (address: string) => {
-    setIsWalletConnected(true);
-    setWalletAddress(address);
-  };
-
   const renderContent = () => {
-    if (!isWalletConnected) {
-      return <WalletConnect onConnect={handleWalletConnect} />;
-    }
-
     switch (activeTab) {
       case 'dashboard':
         return <Dashboard walletAddress={walletAddress} />;
+      case 'crypto':
+        return <CryptoMarket />;
       case 'mint':
         return <MintToken walletAddress={walletAddress} />;
-      case 'transfer':
-        return <Transfer walletAddress={walletAddress} />;
+      case 'requestRole':
+        return <RequestRole walletAddress={walletAddress} />;
       case 'marketplace':
-        return <Marketplace walletAddress={walletAddress} />;
-      case 'p2p':
-        return <P2PTrading walletAddress={walletAddress} />;
-      case 'amm':
-        return <AMMTrading walletAddress={walletAddress} />;
+        return <Marketplace walletAddress={walletAddress} setActiveTab={setActiveTab} />;
       case 'organization':
         return <ManageOrg walletAddress={walletAddress} />;
       case 'retired':
