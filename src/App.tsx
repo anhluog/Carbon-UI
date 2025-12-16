@@ -4,6 +4,11 @@ import Dashboard from './components/Dashboard';
 import MintToken from './components/MintToken';
 import ManageOrg from './components/ManageOrg';
 import Marketplace from './components/Marketplace';
+<<<<<<< Updated upstream
+=======
+import P2PTrading from './components/P2PTrading';
+import AMMTrading from './components/AMMTrading';
+>>>>>>> Stashed changes
 import RetiredProjects from './components/RetiredProject';
 import CryptoMarket from './components/CryptoMarket';
 import RequestRole from './components/RequestRole';
@@ -14,10 +19,16 @@ function App() {
   const [walletAddress, setWalletAddress] = useState('0x1234567890123456789012345678901234567890');
 
   const tabs = [
+<<<<<<< Updated upstream
     { id: 'dashboard', name: 'User', icon: User },
     { id: 'crypto', name: 'Crypto Market', icon: TrendingUp },
     { id: 'mint', name: 'Request Review', icon: Plus },
     { id: 'requestRole', name: 'Request Role', icon: Users },
+=======
+    { id: 'dashboard', name: 'Dashboard', icon: TrendingUp },
+    { id: 'mint', name: 'Request Review', icon: Plus },
+    { id: 'transfer', name: 'Transfer', icon: Send },
+>>>>>>> Stashed changes
     { id: 'marketplace', name: 'Marketplace', icon: ShoppingCart },
     { id: 'organization', name: 'Organization', icon: Building2 },
     { id: 'retired', name: 'RetiredProject', icon: Award }
