@@ -166,18 +166,18 @@ const MintToken: React.FC<MintTokenProps> = ({ walletAddress }) => {
       const receipt = await tx.wait();
       console.log("✅ Transaction đã xác nhận:", receipt);
 
-      // // === Lưu dữ liệu vào backend ===
-      // const projectData = {
-      //   ...metadata,
-      //   amountMinted: Number(formData.carbonAmount),
-      //   txHash: receipt.hash,
-      //   ipfsHash: metadataHash,
-      //   status: "Active",
-      // };
-      // console.log("💾 Gửi dữ liệu lưu DB:", projectData);
+      // === Lưu dữ liệu vào backend ===
+      const projectData = {
+        ...metadata,
+        amountMinted: Number(formData.carbonAmount),
+        txHash: receipt.hash,
+        ipfsHash: metadataHash,
+        status: "Active",
+      };
+      console.log("💾 Gửi dữ liệu lưu DB:", projectData);
 
-      // await axios.post("http://localhost:8080/api/projects/save", projectData);
-      // console.log("✅ Dữ liệu đã lưu vào backend thành công.");
+      await axios.post(`${import.meta.env.BACKEND_API_URL}/api/projects/save`, projectData);
+      console.log("✅ Dữ liệu đã lưu vào backend thành công.") ;
 
       setTxHash(receipt.hash);
       setShowSuccess(true);
